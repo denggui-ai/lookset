@@ -1,0 +1,49 @@
+# ecommerce-studio — 电商棚拍风(第三个 pack,验"用途轴/默认棚拍 B")。
+name: 电商棚拍 / E-commerce Studio
+slug: ecommerce-studio
+version: 0.1.1
+maturity: DRAFT
+depends_on_core: ">=1.0"
+
+trigger_words: [电商主图, 高转化, 淘宝白底, 棚拍主图, 商品主图人像, 详情页人像]
+suitable_categories: [上衣, 连衣裙, 裤装, 外套, 针织, 半裙]
+anti_categories: [重场景大片, 街拍写真, 旅行写真]
+
+visual_language: >
+  clean e-commerce studio portrait, seamless white or light-gray backdrop,
+  true-to-product color fidelity, soft directional studio lighting that shows form and fabric texture,
+  high-conversion catalog clarity, crisp garment detail, minimal distraction, neutral commercial polish.
+model_persona: neutral approachable expression, relaxed composure, composed catalog attitude
+
+scenes:
+  - seamless light-gray studio where the visible floor meets the backdrop in a soft horizon line
+  - same studio with a plain white wall panel for leaning and a faint shoulder contact shadow
+  - same studio with a low white studio block for seated support and feet grounded on the visible floor
+  - same studio with a seamless off-white floor and backdrop and a soft horizon line
+  - same studio with a low light-gray block placed clear of the garment silhouette
+  - same studio with a plain light-gray wall panel, visible floor and clear space for a back-turn pose
+# lighting_palette 按 core §4.1 四段顺序书写:光源 → 方向 → 阴影特征 → 对比/曝光;最后一句锁整组一致。
+# 试点候选(2026-09-15,2026-09-16 瘦身):把"照平"的匀光改写为可见关系——主光方向、补光比、渐变阴影、鞋下接触阴影、背景分离。
+# 光线字段不写任何服饰部件词(袖/驳领/口袋盖),避免对无此结构的服饰形成新增诱导;persona 同理不写"插口袋/直视"。
+lighting_palette: >
+  one large soft key light from camera-left, slightly above eye level;
+  soft fill from camera-right at about one third of the key so the shadow side stays readable;
+  gentle shadow transition across the garment so weave and construction stay visible;
+  a soft contact shadow where visible shoes meet the floor, with a faint tonal gradient on the seamless backdrop;
+  neutral white balance, true-to-product color, highlights hold detail;
+  the same light direction, softness and ratio in all six images.
+pose_masters: inherit
+default_mode: B                              # 棚拍(电商主图默认)
+
+negative_delta_add: [no heavy editorial mood, no flat shadowless lighting, no dramatic shadows hiding product, no busy background, no color cast, no cold detached expression, no street vibe]
+safety_delta:
+  cannot_relax: true
+  extra_constraints: []
+
+d0_preview: inherit-core
+d1_final: inherit-core
+d3_prompts: inherit-core
+qa_extra: [是否色彩对产品保真, 是否背景纯净低干扰, 是否高转化清晰度, 是否有可见方向光塑形而非照平、鞋与地面入画时接触影是否自然, 六张光线方向与软硬是否一致, 表情是否中性亲和而非冷感疏离]
+
+samples_required: [preview-grid, look-1..6, README]
+evals: repo://evals/styles/ecommerce-studio.json
